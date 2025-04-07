@@ -1,48 +1,67 @@
-# devotel
+# Insurance Form Application
 
-<div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img alt="refine logo" src="https://refine.ams3.cdn.digitaloceanspaces.com/readme/refine-readme-banner.png">
-    </a>
-</div>
-<br/>
+A dynamic form application built with React and Refine framework for managing different types of insurance applications including health, home, and car insurance.
 
-This [Refine](https://github.com/refinedev/refine) project was generated with [create refine-app](https://github.com/refinedev/refine/tree/master/packages/create-refine-app).
+## Features
+
+- 🏥 Multiple insurance form types (Health, Home, Car)
+- 📝 Dynamic form fields with conditional rendering
+- 🔄 Dependent select fields (Country-State relationship)
+- ✅ Form validation
+- 📊 Submission management and listing
+- 🎨 Material-UI components
+- 🔒 Error boundaries and proper error handling
+
+## Tech Stack
+
+- **Framework:** [Refine](https://refine.dev/) with React
+- **UI Components:** Material-UI (MUI)
+- **Form Management:** React Hook Form
+- **Routing:** React Router
+- **Type Safety:** TypeScript
+- **Styling:** Tailwind CSS
+- **Data Provider:** REST API
+
+## **📂 Project Structure**
+```
+src/
+├── components/
+│   ├── form-field/
+│   ├── field-types/
+│   └── error-boundary/
+├── hooks/
+│   └── use-dynamic-options/
+├── resources/
+│   ├── insurance.create/
+│   └── insurance.list/
+├── services/
+│   ├── data-provider/
+└── types/
+│── README.md              # You're here!
+```
 
 ## Getting Started
 
-A React Framework for building internal tools, admin panels, dashboards & B2B apps with unmatched flexibility ✨
+### Prerequisites
 
-Refine's hooks and components simplifies the development process and eliminates the repetitive tasks by providing industry-standard solutions for crucial aspects of a project, including authentication, access control, routing, networking, state management, and i18n.
+- Node.js (v14 or higher)
+- pnpm
 
-## Available Scripts
-
-### Running the development server.
-
-```bash
-    pnpm dev
-```
-
-### Building for production.
+### Installation
 
 ```bash
-    pnpm build
+# Clone the repository
+git clone https://github.com/yourusername/insurance-form-app.git
+
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build the application
+pnpm build
+
+# Start production server
+pnpm start
 ```
-
-### Running the production server.
-
-```bash
-    pnpm start
-```
-
-## Learn More
-
-To learn more about **Refine**, please check out the [Documentation](https://refine.dev/docs)
-
-- **REST Data Provider** [Docs](https://refine.dev/docs/core/providers/data-provider/#overview)
-- **Tailwind CSS** [Docs](https://refine.dev/docs/guides-concepts/general-concepts/#headless-concept)
-- **React Router** [Docs](https://refine.dev/docs/core/providers/router-provider/)
-
-## License
-
-MIT

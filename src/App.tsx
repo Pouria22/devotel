@@ -1,53 +1,37 @@
-import {
-  Refine,
-  GitHubBanner,
-  WelcomePage,
-  Authenticated,
-  AuthPage,
-  ErrorComponent,
-} from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import { Refine } from "@refinedev/core";
+import RouterProvider from "@refinedev/react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import dataProvider from "@refinedev/simple-rest";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router";
-import routerBindings, {
-  NavigateToResource,
-  CatchAllNavigate,
-  UnsavedChangesNotifier,
-  DocumentTitleHandler,
-} from "@refinedev/react-router";
-import { Layout } from "./components/layout";
-import "./App.css";
+import InsuranceCreate from "./resources/insurance/insurance.create";
+import { dataProvider } from "./services/data-provider";
+import InsuranceList from "./resources/insurance/insurance.list";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <GitHubBanner />
-      <RefineKbarProvider>
-        <DevtoolsProvider>
-          <Refine
-            dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
-            routerProvider={routerBindings}
-            options={{
-              syncWithLocation: true,
-              warnWhenUnsavedChanges: true,
-              useNewQueryKeys: true,
-              projectId: "xOj8Bi-RBn1rk-h82DJf",
-            }}
-          >
-            <Routes>
-              <Route index element={<WelcomePage />} />
-            </Routes>
-            <RefineKbar />
-            <UnsavedChangesNotifier />
-            <DocumentTitleHandler />
-          </Refine>
-          <DevtoolsPanel />
-        </DevtoolsProvider>
-      </RefineKbarProvider>
-    </BrowserRouter>
-  );
+
+const routes = [
+  <Route path="/" element={<InsuranceCreate />} />,
+  <Route path="/list" element={<InsuranceList />} />
+];
+export default function App() {
+	return (
+		<BrowserRouter>
+			<Refine
+				routerProvider={RouterProvider}
+				dataProvider={dataProvider("https://assignment.devotel.io/api")}
+				resources={[
+					{
+						name: "insurance/forms",
+						list: "/forms",
+					},
+					{
+						name: "insurance/forms/submissions",
+						list: "/list",
+					},
+				]}
+			>
+				<Routes>
+					{routes}
+				</Routes>
+			</Refine>
+		</BrowserRouter>
+	);
 }
-
-export default App;
